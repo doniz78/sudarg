@@ -1,0 +1,373 @@
+@bg: rgb(106, 184, 249);
+@bg-2: rgb(249, 242, 106);
+@boat-body: rgb(34, 92, 238);
+@boat-body-shadow: rgb(6, 58, 212);
+@boat-rim: rgb(250, 221, 95);
+@boat-rim-shadow: rgb(245, 183, 72);
+@sailor: rgb(236, 78, 47);
+@wave-one: rgb(184, 236, 253);
+
+body {
+  margin: 0;
+  background-color: @wave-one;
+}
+
+.centered() {
+  margin: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+}
+
+.container {
+  position: relative;
+  background-image: linear-gradient(to right top, @bg 65%, @bg-2);
+
+  #sky {
+    height: 62.5vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    .cloud {
+      .centered();
+      right: 750px;
+      bottom: 150px;
+      height: 125px;
+      width: 125px;
+      border-radius: 50%;
+      background-color: white;
+      opacity: 0.6;
+      &:nth-of-type(2) {
+        bottom: 250px;
+        left: 1150px;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        left: 80px;
+        top: 40px;
+        height: 85px;
+        width: 85px;
+        border-radius: 50%;
+        background-color: white;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        left: -40px;
+        top: 35px;
+        height: 85px;
+        width: 85px;
+        border-radius: 50%;
+        background-color: white;
+      }
+    }
+  }
+  #ocean {
+    
+    #boat-container {
+      animation: boatsway 3s ease-in-out infinite alternate;
+      @keyframes boatsway {
+        from { transform: rotate(-5.5deg); }
+        to { transform: rotate(5.5deg); }
+      }
+      
+      #boat {
+        .centered();
+        top: 45px;
+        width: 400px;
+        height: 100px;
+        background-color: @boat-body;
+        border-bottom-right-radius: 5rem;
+        border-bottom-left-radius: 5rem;
+        z-index: 3;
+        transform-style: preserve-3d;
+        &::before {
+          content: "";
+          position: absolute;
+          height: 125px;
+          width: 125px;
+          left: 225px;
+          bottom: 0px;
+          border-top-left-radius: 4rem;
+          border-bottom-right-radius: 5rem;
+          background-color: @boat-body;
+          z-index: 3;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          height: 100px;
+          width: 100px;
+          left: 222.5px;
+          bottom: 45px;
+          border-radius: 4rem;
+          background-color: @boat-rim;
+          transform: translateZ(-1px);
+        }
+        #shadow-right {
+          .centered();
+          left: 200px;
+          height: 100px;
+          width: 100px;
+          height: 125px;
+          width: 125px;
+          left: 275px;
+          bottom: 25px;
+          border-top-left-radius: 4rem;
+          border-bottom-right-radius: 5rem;
+          background-color: @boat-body-shadow;
+          z-index: 2;
+        }
+        #rim-left {
+          .centered();
+          width: 260px;
+          height: 22.5px;
+          background-color: @boat-rim;
+          border-radius: 5rem;
+          left: -180px;
+          bottom: 115px;
+          z-index: 3;
+        }
+        #rim-right {
+          .centered();
+          width: 155px;
+          height: 20px;
+          background-color: @boat-rim;
+          border-radius: 5rem;
+          right: -290px;
+          bottom: 170px;
+          z-index: 5;
+          &::before {
+            content: "";
+            position: absolute;
+            width: 55px;
+            right: 0px;
+            height: 20px;
+            background-color: @boat-rim-shadow;
+            border-radius: 5rem;
+          }
+          &::after {
+            content: "";
+            position: absolute;
+            width: 55px;
+            right: 40px;
+            height: 20px;
+            background-color: @boat-rim;
+            border-radius: 5rem;
+          }
+        }
+        #luggage-right {
+          .centered();
+          bottom: 180px;
+          border-top-left-radius: 1rem;
+          border-top-right-radius: 1rem;
+          width: 90px;
+          height: 50px;
+          left: 295px;
+          opacity: 0.7;
+          background-color: @wave-one;
+          &::before {
+            content: "";
+            position: absolute;
+            bottom: 40px;
+            left: 20px;
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+            height: 27.5px;
+            width: 50px;
+            background-color: @wave-one;
+          }
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: 50px;
+            left: 30.5px;
+            height: 7.5px;
+            width: 30px;
+            background-color: @bg;
+          }
+        }
+        #luggage-right-shadow {
+          .centered();
+          bottom: 180px;
+          border-top-left-radius: 1rem;
+          border-top-right-radius: 1rem;
+          width: 50px;
+          height: 50px;
+          left: 257.5px;
+          opacity: 0.7;
+          background-color: white;
+        }
+        #luggage-left {
+          .centered();
+          left: -380px;
+          bottom: 143px;
+          width: 110px;
+          height: 70px;
+          border-radius: 1rem;
+          background-color: @wave-one;
+          opaciy: 0.7;
+          transform: translateZ(-1px);
+          &::before {
+            content: "";
+            position: absolute;
+            left: -20px;
+            width: 80px;
+            height: 57.5px;
+            background-color: white;
+            border-radius: 1rem;
+          }
+          &::after {
+            content: "";
+            position: absolute;
+            top: 12.5px;
+            left: -2.5px;
+            width: 37.5px;
+            height: 12.5px;
+            background-color: @boat-rim;
+            border-radius: 1rem;
+          }
+        }
+      }
+
+      #sailor {
+        .centered();
+        top: -165px;
+        height: 110px;
+        width: 97.5px;
+        right: 115px;
+        border-top-left-radius: 4rem;
+        border-top-right-radius: 4rem;
+        background-color: @sailor;
+        z-index: 1;
+        &::before {
+          content: "";
+          position: absolute;
+          width: 14.5px;
+          height: 8.5px;
+          background-color: black;
+          border-bottom-left-radius: 1rem;
+          border-bottom-right-radius: 1rem;
+          top: 70.5px;
+          left: 35.5px;
+        }
+      }
+
+      #sailor-arm-left {
+        .centered();
+        left: -65.5px;
+        top: -70px;
+        height: 55px;
+        width: 30px;
+        background-color: @sailor;
+        z-index: 6;
+        transform: translateZ(1px);
+        border-radius: 4rem;
+      }
+
+      #sailor-arm-right {
+        .centered();
+        left: -235.5px;
+        top: -145px;
+        height: 30px;
+        width: 65px;
+        background-color: @sailor;
+        z-index: 6;
+        transform: translateZ(1px);
+        border-radius: 4rem;
+        transform-origin: right center;
+        animation: wave 0.85s infinite alternate ease-in-out;
+        @keyframes wave {
+          from { transform: rotate(-15deg); }
+          to { transform: rotate(15deg); }
+        }
+      }
+
+      .sailor-eye {
+        .centered();
+        left: -162.5px;
+        bottom: 180px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: white;
+        z-index: 7;
+        &:nth-of-type(2) {
+          left: -87.5px;
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          background-color: black;
+          border-radius: 50%;
+          top: 9px;
+          left: 10px;
+        }
+      }
+
+      #sailor-cap {
+        .centered();
+        bottom: 255px;
+        right: 80px;
+        height: 50px;
+        width: 37.5px;
+        border-top-left-radius: 12.5px;
+        border-top-right-radius: 12.5px;
+        background-color: @boat-rim-shadow;
+        transform: rotate(20deg);
+        &::before {
+          content: "";
+          position: absolute;
+          right: 20px;
+          top: 5px;
+          height: 50px;
+          width: 27.5px;
+          border-top-left-radius: 15px;
+          border-top-right-radius: 15px;
+          background-color: @boat-rim;
+          transform: rotate(-50deg);
+        }
+      }
+    }
+
+    .waves {
+      position: relative;
+      width: 100%;
+      height: 15vh;
+      margin-bottom: -7px;
+      min-height: 100px;
+      max-height: 150px;
+      z-index: 10;
+    }
+
+    .parallax > use {
+      animation: tide 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+      @keyframes tide {
+        from { transform: translate3d(-90px, 0, 0); }
+        to { transform: translate3d(85px, 0, 0); }
+      }
+      &:nth-child(1) {
+        animation-delay: -2s;
+        animation-duration: 7s;
+      }
+      &:nth-child(2) {
+        animation-delay: -3s;
+        animation-duration: 10s;
+      }
+      &:nth-child(3) {
+        animation-delay: -4s;
+        animation-duration: 13s;
+      }
+      &:nth-child(4) {
+        animation-delay: -5s;
+        animation-duration: 20s;
+      }
+    }
+  }
+}
